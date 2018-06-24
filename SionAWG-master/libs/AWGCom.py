@@ -16,12 +16,12 @@ from SocketCom import SocketCom
 def test():
     awg=AWGCom('192.168.1.10',4000)
     awg.openCom()
-    print awg.readWaveformNames()
+    print (awg.readWaveformNames())
 
     t=np.arange(0,2*math.pi,0.01)
     s= np.sin(t)
-    #    print s
-    print len(s)
+    #    print (s)
+    print (len(s))
     awg.setRunMode("SEQuence")
     awg.createSequence(SequenceLength=1)
 
@@ -38,7 +38,7 @@ def test():
     awg.setChannelWaveformSequence(2,'test2',1)
     awg.newWaveform('C1_DATA_1',200000)
     #    awg.sendMessage('*OPC?')
-    #    print awg.readMessage()
+    #    print (awg.readMessage())
 
     #    pylab.plot(t,s)
     #    pylab.show()
@@ -130,7 +130,7 @@ class AWGCom(SocketCom):
                 for name in Names:
                     dlmsg.append('WLISt:WAVeform:DELete "'+name+'"')
             except TypeError:
-                print 'TypeError occourred on Waveform Names in function deleteWaveforms, please ensure that message is a string or a list of strings'
+                print ('TypeError occourred on Waveform Names in function deleteWaveforms, please ensure that message is a string or a list of strings')
         self.sendMessage(dlmsg)
 
     def changeChannelDelay(self, Channel, Delay, stringOnly=0):
@@ -521,9 +521,3 @@ class AWGCom(SocketCom):
 
 if __name__=='__main__':
     test()
-
-
-#        print msg
-#        f = open('myfile123.txt','w')
-#        f.write(msg)
-#        f.close()

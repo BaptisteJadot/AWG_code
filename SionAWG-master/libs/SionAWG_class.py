@@ -57,7 +57,6 @@ class SionAWG(AWGCom):
             if wfname[0] != '*':
                 self.deleteWaveforms(wfname)
 
-
     def SendSequenceLight(self, sequence):
         """
         sequence is a dictionnary with those entries:
@@ -257,7 +256,7 @@ class SionAWG(AWGCom):
 
     def test(self):
         self.openCom()
-        print self.readWaveformNames()
+        print (self.readWaveformNames())
 
 
         self.setRunMode("SEQuence")
@@ -292,7 +291,7 @@ class SionAWG(AWGCom):
 
 
         #    awg.sendMessage('*OPC?')
-        #    print awg.readMessage()
+        #    print (awg.readMessage())
         #    awg.deleteWaveforms(names)
         self.closeCom()
 

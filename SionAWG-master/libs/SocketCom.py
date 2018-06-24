@@ -14,23 +14,23 @@ def test():
     sock.openCom()
     sock.sendMessage('WLIST:SIZE?')
     ansr=sock.readMessage()
-    print ansr
+    print (ansr)
 
     msg=[]
     for i in xrange (1,int(ansr)+1):
        msg.append('WLIST:NAME? '+str(i))
-    print msg
+    print (msg)
     sock.sendMessage(msg)
     wnames=sock.readMessage()
-    print wnames
+    print (wnames)
 
     LWNames = re.findall('"waveseq.*?"',wnames)
-    print LWNames
+    print ( LWNames
 
     dlmsg=[]
     for name in LWNames:
         dlmsg.append('WLISt:WAVeform:DELete '+name)
-    print dlmsg
+    print (dlmsg)
     sock.sendMessage(dlmsg)
 
     sock.closeCom()
@@ -66,7 +66,7 @@ class SocketCom(object):
                 fullMsg.rstrip(self.delimiter)
                 self.s.send(fullMsg+self.msgEnd)
             except TypeError:
-                print 'TypeError occourred on message text, please ensure that message is a string or a list of strings'
+                print ('TypeError occourred on message text, please ensure that message is a string or a list of strings')
 
 
     def readMessage(self):
